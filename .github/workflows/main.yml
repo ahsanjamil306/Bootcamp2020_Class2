@@ -26,10 +26,11 @@ jobs:
         with:
         node-version: 10
         
-          - name: GitHub Action for Yarn Pkg
-  # You may pin to the exact commit or the version.
-  # uses: funkyremi/yarn-github-action@234d1515543a08ce49880746d2d19dd0c8b983a8
-             uses: funkyremi/yarn-github-action@1.0.0 
+          - name: GitHub Action for Yarn
+  
+              uses: Borales/actions-yarn@v2.3.0
+               with:
+    # Yarn command
               cmd: install
 
           - name: Creating build
