@@ -23,18 +23,19 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Setup Nodejs
-        uses: actions/setup-node@v2-beta
-        with:
-        node-version: 10
+       - name: Run a one-line script
+      run: echo Hello, world!
 
-        - name: Github Action for yarn
-           uses: actions/setup-yarn@2.1.0
-               with:
-              cmd: install
-
-          - name: Creating build
-            run: yarn build
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v2.1.0
+      with:
+        version: 12 
+       
+    - name: Build React App
+      run: |
+        npm install # Install Dependencies
+        CI=false npm run build # CI=false to ignore warnings
+        
               
            - name: Installing surge
               run: npm install -g surge
