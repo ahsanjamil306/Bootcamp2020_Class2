@@ -21,19 +21,14 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Installing node
+      - name: Setup Node.js envioment
         uses: actions/setup-node@v2-beta
         with:
-        node-version: 10
-        
-          
-            - name: Yarn install cache
-  # You may pin to the exact commit or the version.
-  # uses: c-hive/gha-yarn-cache@1188bbd5a9af66e263de707cf9e97b7b7c942969
-                uses: c-hive/gha-yarn-cache@v1
+        node-version: 12
+        - name: Github Action for yarn
+           uses: actions/setup-yarn@2.1.0
                with:
-  
-                  cmd: install
+              cmd: install
 
           - name: Creating build
             run: yarn build
