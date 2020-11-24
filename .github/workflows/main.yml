@@ -27,7 +27,7 @@ jobs:
     - name: Setup Nodejs environment
       uses: actions/setup-node@v2-beta
       with:
-        version: 10 
+        version: 12 
        
     - name: Build React App
       run: |
@@ -35,14 +35,11 @@ jobs:
         CI=false npm run build # CI=false to ignore warnings
         
               
-           - name: Installing surge
-              run: npm install -g surge
+    - name: Installing surge
+     run: npm install -g surge
          
        - name: Deploying on surge
          run: surge ./build http://bootcamp-2class.surge.sh/ --token ${{secrets.SURGE_TOKEN}}
 
-         - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+         
       
