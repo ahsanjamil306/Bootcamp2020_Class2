@@ -26,7 +26,7 @@ jobs:
       - name: Setup Nodejs
         uses: actions/setup-node@v2-beta
         with:
-        node-version: 12
+        node-version: 10
 
         - name: Github Action for yarn
            uses: actions/setup-yarn@2.1.0
