@@ -38,4 +38,9 @@ jobs:
          
        - name: Deploying on surge
          run: surge ./build http://bootcamp-2class.surge.sh/ --token ${{secrets.SURGE_TOKEN}}
+
+         - name: Run a multi-line script
+      run: |
+        echo Add other actions to build,
+        echo test, and deploy your project.
       
