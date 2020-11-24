@@ -7,9 +7,7 @@ on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
+  
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -23,23 +21,24 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-     
-    - name: Setup Nodejs environment
-      uses: actions/setup-node@v2-beta
-      with:
-        version: 12 
-       
-    - name: Build React App
-      run: |
-        npm install # Install Dependencies
-        CI=false npm run build # CI=false to ignore warnings
-        
+      - name: Setup Nodejs
+        uses: actions/setup-node@v2-beta
+        with:
+        node-version: 12
+
+        - name: Github Action for yarn
+           uses: Borales/actions-yarn@2.3.0
+               with:
+              cmd: install
+
+          - name: Creating build
+            run: yarn build
               
-    - name: Installing surge
-     run: npm install -g surge
+           - name: Installing surge
+              run: npm install -g surge
          
        - name: Deploying on surge
          run: surge ./build http://bootcamp-2class.surge.sh/ --token ${{secrets.SURGE_TOKEN}}
 
-         
+      
       
